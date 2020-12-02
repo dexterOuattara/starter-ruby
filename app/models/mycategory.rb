@@ -1,0 +1,2 @@
+class Mycategory < ApplicationRecord
+end
