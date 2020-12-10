@@ -14,23 +14,20 @@
 
   <div class="row">
 
-    <% @pins.each do |pin| %>
+    <% @posts.each do |post| %>
 
       <div class="col-md-4">
         <div class="card card-img-top">
-          <%= link_to image_tag(pin.image, style: 'height:200px' ) , pin %>
+          <%= link_to image_tag(post.image, style: 'height:200px' ) , post %>
           <div class="card-body">
-            <div class="mb-1 text-danger"><%= pin.created_at.to_s(:short) %> <strong class="d-inline-block mb-2 text-white btn btn-primary"><%= pin.user %></strong></div>
+            <div class="mb-1 text-danger"><%= post.created_at.to_s(:short) %> <strong class="d-inline-block mb-2 text-white btn btn-primary"><%= post.category.name %></strong></div>
 
-            <h5 class="card-title"><%= pin.title %></h5>
-            <p class="card-text"><%=truncate( sanitize pin.caption, :length => 100)  %></p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted"><%= pin.created_at %></small>
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%=truncate( sanitize post.caption, :length => 100)  %></p>
+
           </div>
         </div>
       </div>
-
     <% end %>
 
   </div>
