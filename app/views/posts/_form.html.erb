@@ -40,3 +40,14 @@
     <%= form.submit %>
 </div>
 <% end %>
+
+
+<script src="https://cdn.tiny.cloud/1/przgmzfaioiisrc6rjnssfkp36q9iscbyi8az9573ti8fztu/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+        toolbar_mode: 'floating',
+    });
+</script>
