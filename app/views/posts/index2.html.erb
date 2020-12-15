@@ -1,0 +1,104 @@
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <%= render 'layouts/header' %>
+
+  <%#= render 'layouts/categories' %>
+
+
+
+  <div class="row">
+
+    <% @posts.each do |post| %>
+
+      <div class="col-md-3">
+        <div class="card card-img-top">
+          <%= link_to image_tag(post.image, size: "332x200", alt: "Edit Entry" ) , post %>
+          <div class="card-body">
+            <div class="mb-1 text-danger"><%= post.created_at.to_s(:short) %> <strong class="d-inline-block mb-2 text-white btn btn-primary"><%= post.category.name %></strong></div>
+
+            <h5 class="card-title"><%= post.title %></h5>
+            <p class="card-text"><%=truncate( sanitize post.caption, :length => 100)  %></p>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <% @categories.each do |category| %>
+
+        <%= link_to category.name, posts_path(:cate => category.id)  %>
+
+      <% end %>
+
+    </nav>
+  </div>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+    <div class="row">
+
+    <% @latestposts.each do |latestpost| %>
+
+      <div class="col-md-4">
+        <div class="card card-img-top">
+          <%= link_to image_tag(latestpost.image, style: 'height:200px' ) , latestpost %>
+          <div class="card-body">
+            <div class="mb-1 text-danger"><%= latestpost.created_at.to_s(:short) %> <strong class="d-inline-block mb-2 text-white btn btn-primary"><%= latestpost.category.name %></strong></div>
+
+            <h5 class="card-title"><%= latestpost.title %></h5>
+            <p class="card-text"><%=truncate( sanitize latestpost.caption, :length => 100)  %></p>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+    <br>
+
+    <br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+
+<!--  <div class="row">-->
+
+    <%# @latestposts.each do |latestpost| %>
+
+<!--      <div class="col-md-4">-->
+<!--        <div class="card card-img-top">-->
+          <%#= link_to image_tag(latestpost.image, style: 'height:200px' ) , latestpost %>
+<!--          <div class="card-body">-->
+<!--            <div class="mb-1 text-danger"><%#= latestpost.created_at.to_s(:short) %> <strong class="d-inline-block mb-2 text-white btn btn-primary"><%#= latestpost.category.name %></strong></div>-->
+
+<!--            <h5 class="card-title"><%#= latestpost.title %></h5>-->
+<!--            <p class="card-text"><%#=truncate( sanitize latestpost.caption, :length => 100)  %></p>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+    <%# end %>
+
+<!--  </div>-->
+
+    <br>
+  </div>
+</div>

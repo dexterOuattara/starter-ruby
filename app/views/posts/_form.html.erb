@@ -30,7 +30,7 @@
 <div class="field">
     <select name="post[category_id]" id="category_id">
         <% @posts.each do |post| %>
-        <option value="<%= post.category.id %>"><%= post.category.name %></option>
+          <option value="<%= post.category.id %>"><%= post.category.name %></option>
         <% end %>
     </select>
 

@@ -6,11 +6,24 @@ class CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+
+    cate = params[:cate]
+
+    if !cate.nil?
+      @categories = Category.where(:category_id => cate)
+    else
+      @categories = Category.all
+    end
+
+
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+
+    @category = Category.find(params[:id])
+
   end
 
   # GET /categories/new

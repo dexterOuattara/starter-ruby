@@ -1,12 +1,37 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :tag]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    @categories = Category.select(:name).distinct
+
+    if params[:category].blank?
+      @posts = Post.all.order("created_at DESC")
+
+    else
+
+      @category_id = Category.find_by(name: params[:category]).id
+      @posts = Post.where(category_id: @category_id).order("created_at DESC")
+
+    end
+
+
+    cate = params[:cate]
+
+    if !cate.nil?
+      @categories = Category.where(:category_id => cate)
+    else
+      @categories = Category.all
+    end
+
+    @categories = Category.all
+
+    # @latestposts = Post.all.where(:category_id => '1')
+    # @latestposts = Post.all.distinct
+    #
+    @latestposts= Post.select(:category_id).distinct
+
 
   end
 
@@ -14,7 +39,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     @categories = Category.select(:name).distinct
 
-  end
+  end 
 
   # GET /posts/1
   # GET /posts/1.json
@@ -34,6 +59,15 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    if params[:category].blank?
+      @posts = Post.all.order("created_at DESC")
+
+    else
+
+      @category_id = Category.find_by(name: params[:category]).id
+      @posts = Post.where(category_id: @category_id).order("created_at DESC")
+
+    end
   end
 
   # POST /posts
