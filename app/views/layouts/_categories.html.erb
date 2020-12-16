@@ -5,11 +5,15 @@
     <div class="row">
       <div class="col-lg-6">
         <ul class="list-unstyled mb-0">
-          <% @latestposts.each do |latestpost| %>
-            <li>
-              <a href="#"><%= latestpost.category.name %></a>
-            </li>
-          <% end %>
+            <% @categories.each do |category| %>
+              <li>
+
+                <%= link_to category.name, posts_path(:cate => category.id)  %>
+              </li>
+
+            <% end %>
+
+
         </ul>
       </div>
     </div>
