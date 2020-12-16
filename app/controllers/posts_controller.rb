@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
 
+<<<<<<< Updated upstream
     if params[:category].blank?
       @posts = Post.all.order("created_at DESC")
 
@@ -15,6 +16,9 @@ class PostsController < ApplicationController
       @posts = Post.where(category_id: @category_id).order("created_at DESC")
 
     end
+=======
+
+>>>>>>> Stashed changes
 
 
     cate = params[:cate]
@@ -27,10 +31,13 @@ class PostsController < ApplicationController
 
     @categories = Category.all
 
+<<<<<<< Updated upstream
     # @latestposts = Post.all.where(:category_id => '1')
     # @latestposts = Post.all.distinct
     #
     @latestposts= Post.select(:category_id).distinct
+=======
+>>>>>>> Stashed changes
 
 
   end
@@ -44,6 +51,10 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+<<<<<<< Updated upstream
+=======
+    @post = Post.find(params[:id])
+>>>>>>> Stashed changes
     @categories = Category.all
 
   end
