@@ -6,38 +6,32 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
 
-<<<<<<< Updated upstream
-    if params[:category].blank?
-      @posts = Post.all.order("created_at DESC")
+    # if params[:category].blank?
+    #   @posts = Post.all.order("created_at DESC")
+    #
+    # else
+    #
+    #   @category_id = Category.find_by(name: params[:category]).id
+    #
+    #   @posts = Post.where(category_id: @category_id).order("created_at DESC")
+    #
+    # end
 
-    else
-
-      @category_id = Category.find_by(name: params[:category]).id
-      @posts = Post.where(category_id: @category_id).order("created_at DESC")
-
-    end
-=======
-
->>>>>>> Stashed changes
-
+    @categories = Category.all
 
     cate = params[:cate]
 
     if !cate.nil?
-      @categories = Category.where(:category_id => cate)
+      @posts = Post.where(:category_id => cate).order('created_at DESC')
     else
-      @categories = Category.all
+      @posts = Post.all.order('created_at DESC')
     end
 
-    @categories = Category.all
 
-<<<<<<< Updated upstream
     # @latestposts = Post.all.where(:category_id => '1')
     # @latestposts = Post.all.distinct
-    #
-    @latestposts= Post.select(:category_id).distinct
-=======
->>>>>>> Stashed changes
+
+    # @latestposts= Post.select(:category_id).distinct
 
 
   end
@@ -51,10 +45,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-<<<<<<< Updated upstream
-=======
+    # @latestposts= Post.select(:category_id).distinct
     @post = Post.find(params[:id])
->>>>>>> Stashed changes
     @categories = Category.all
 
   end
