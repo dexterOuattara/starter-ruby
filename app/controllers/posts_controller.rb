@@ -12,9 +12,9 @@ class PostsController < ApplicationController
     cate = params[:cate]
 
     if !cate.nil?
-      @posts = Post.where(:category_id => cate).order('created_at DESC')
+      @posts = Post.where(:category_id => cate).paginate(page: params[:page], per_page: 10).order('created_at DESC')
     else
-      @posts = Post.all.order('created_at DESC')
+     @posts = Post.paginate(page: params[:page], per_page: 10)
     end
 
 

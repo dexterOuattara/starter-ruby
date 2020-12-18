@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_111011) do
     t.string "description"
   end
 
-# Could not dump table "pins" because of following StandardError
+# Could not dump table "pins2" because of following StandardError
 #   Unknown type '' for column 'user'
 
   create_table "posts", force: :cascade do |t|
@@ -66,5 +66,5 @@ ActiveRecord::Schema.define(version: 2020_12_08_111011) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "pins", "categories"
+  add_foreign_key "pins2", "categories"
 end

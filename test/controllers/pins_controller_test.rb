@@ -16,11 +16,11 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create pin" do
-    assert_difference('Pin.count') do
+    assert_difference('Pin2.count') do
       post pins_url, params: { pin: { caption: @pin.caption, title: @pin.title } }
     end
 
-    assert_redirected_to pin_url(Pin.last)
+    assert_redirected_to pin_url(Pin2.last)
   end
 
   test "should show pin" do
@@ -39,7 +39,7 @@ class PinsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy pin" do
-    assert_difference('Pin.count', -1) do
+    assert_difference('Pin2.count', -1) do
       delete pin_url(@pin)
     end
 

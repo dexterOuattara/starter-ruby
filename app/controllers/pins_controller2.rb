@@ -1,41 +1,41 @@
-class PinsController < ApplicationController
+class PinsController2 < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /pins
-  # GET /pins.json
+  # GET /pins2
+  # GET /pins2.json
   def index
-    @pins = Pin.all
+    @pins = Pin2.all
     @categories = Category.all
   end
 
-  # GET /pins/1
-  # GET /pins/1.json
+  # GET /pins2/1
+  # GET /pins2/1.json
   def show
     @categories = Category.all
 
   end
 
-  # GET /pins/new
+  # GET /pins2/new
   def new
-    @pin = Pin.new
+    @pin = Pin2.new
     @categories = Category.all
 
   end
 
-  # GET /pins/1/edit
+  # GET /pins2/1/edit
   def edit
   end
 
-  # POST /pins
-  # POST /pins.json
+  # POST /pins2
+  # POST /pins2.json
   def create
-    @pin = Pin.new(pin_params)
+    @pin = Pin2.new(pin_params)
     @pin.user = current_user
 
     respond_to do |format|
       if @pin.save
-        format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
+        format.html { redirect_to @pin, notice: 'Pin2 was successfully created.' }
         format.json { render :show, status: :created, location: @pin }
       else
         format.html { render :new }
@@ -44,12 +44,12 @@ class PinsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /pins/1
-  # PATCH/PUT /pins/1.json
+  # PATCH/PUT /pins2/1
+  # PATCH/PUT /pins2/1.json
   def update
     respond_to do |format|
       if @pin.update(pin_params)
-        format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
+        format.html { redirect_to @pin, notice: 'Pin2 was successfully updated.' }
         format.json { render :show, status: :ok, location: @pin }
       else
         format.html { render :edit }
@@ -58,12 +58,12 @@ class PinsController < ApplicationController
     end
   end
 
-  # DELETE /pins/1
-  # DELETE /pins/1.json
+  # DELETE /pins2/1
+  # DELETE /pins2/1.json
   def destroy
     @pin.destroy
     respond_to do |format|
-      format.html { redirect_to pins_url, notice: 'Pin was successfully destroyed.' }
+      format.html { redirect_to pins_url, notice: 'Pin2 was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,7 +71,7 @@ class PinsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
-      @pin = Pin.find(params[:id])
+      @pin = Pin2.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
