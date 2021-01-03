@@ -6,39 +6,17 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
 
-    # if params[:category].blank?
-    #   @posts = Post.all.order("created_at DESC")
-    #
-    # else
-    #
-    #   @category_id = Category.find_by(name: params[:category]).id
-    #
-    #   @posts = Post.where(category_id: @category_id).order("created_at DESC")
-    #
-    # end
 
     @categories = Category.all
 
     cate = params[:cate]
-    @posts = Post.search(params[:search]).order('created_at DESC')
 
     if !cate.nil?
-<<<<<<< Updated upstream
+      # @posts = Post.where(:category_id => cate).paginate(page: params[:page], per_page: 5).order('created_at DESC')
       @posts = Post.where(:category_id => cate).order('created_at DESC')
     else
-      @posts = Post.all.order('created_at DESC')
-=======
-      @posts = Post.where(:category_id => cate).paginate(page: params[:page], per_page: 5).order('created_at DESC')
-    else
-     @posts = Post.paginate(page: params[:page], per_page: 5)
->>>>>>> Stashed changes
+     @posts = Post.all
     end
-
-
-    # @latestposts = Post.all.where(:category_id => '1')
-    # @latestposts = Post.all.distinct
-
-    # @latestposts= Post.select(:category_id).distinct
 
 
   end
@@ -52,6 +30,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    # @latestposts= Post.select(:category_id).distinct
     @post = Post.find(params[:id])
     @categories = Category.all
 
